@@ -1,4 +1,4 @@
-GET http://localhost:9999/books/
+GET http://localhost:9999/books/find/all
 
 ###
 

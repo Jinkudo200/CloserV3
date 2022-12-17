@@ -89,6 +89,8 @@ public class AdherentControllor {
         return new ResponseEntity<>(updateAdherent, HttpStatus.OK);
     }
 
+
+
     @DeleteMapping("/delete/{id}")
     public ResponseEntity<?> deleteAdherent(@PathVariable("id") Long id) {
         as.deleteAdherent(id);

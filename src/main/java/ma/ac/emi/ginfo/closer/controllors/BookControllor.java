@@ -12,6 +12,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.UUID;
 
 @CrossOrigin
 @RequestMapping("/books")
@@ -27,7 +28,7 @@ public class BookControllor {
     @Autowired
     ProviderService ps;
 
-    @GetMapping("/")
+    @GetMapping("/find/all")
     public ResponseEntity<List<Book>> books(){
         List<Book> books = bs.books();
         return new ResponseEntity<>(books, HttpStatus.OK);
@@ -49,11 +50,11 @@ public class BookControllor {
         return new ResponseEntity<>(newBook, HttpStatus.CREATED);
     }
 
-//    @GetMapping("/find/{id}")
-//    public ResponseEntity<Book> getBookById(@PathVariable("id") Long id) {
-//        Book books = bs.findBookById(id);
-//        return new ResponseEntity<>(books, HttpStatus.OK);
-//    }
+    @GetMapping("/find/{id}")
+    public ResponseEntity<Book> getBookById(@PathVariable("id") UUID id) {
+        Book books = bs.findBookById(id);
+        return new ResponseEntity<>(books, HttpStatus.OK);
+    }
 
     @PutMapping("/update")
     public ResponseEntity<Book> updateBook(@RequestBody Book adherent) {
@@ -61,9 +62,30 @@ public class BookControllor {
         return new ResponseEntity<>(updateBook, HttpStatus.OK);
     }
 
-    @DeleteMapping("/delete/{id}")
-    public ResponseEntity<?> deleteBook(@PathVariable("id") Long id) {
-        bs.deleteBook(id);
-        return new ResponseEntity<>(HttpStatus.OK);
+    @PutMapping("/accept/{id}")
+    public ResponseEntity<Book> acceptBook(@PathVariable("id") UUID id) {
+        Book book = bs.findBookById(id);
+        bs.acceptBook(book);
+        return new ResponseEntity<>(book, HttpStatus.OK);
     }
+
+    @PutMapping("/finish/{id}")
+    public ResponseEntity<Book> finishBook(@PathVariable("id") UUID id) {
+        Book book = bs.findBookById(id);
+        bs.finishBook(book);
+        return new ResponseEntity<>(book, HttpStatus.OK);
+    }
+
+    @PutMapping("/refuse/{id}")
+    public ResponseEntity<Book> refuseBook(@PathVariable("id") UUID id) {
+        Book book = bs.findBookById(id);
+        bs.refuseBook(book);
+        return new ResponseEntity<>(book, HttpStatus.OK);
+    }
+
+//    @DeleteMapping("/delete/{id}")
+//    public ResponseEntity<?> deleteBook(@PathVariable("id") UUID id) {
+//        bs.deleteBook(id);
+//        return new ResponseEntity<>(HttpStatus.OK);
+//    }
 }

@@ -1,16 +1,16 @@
 package ma.ac.emi.ginfo.closer.services;
 
 import ma.ac.emi.ginfo.closer.entities.Adherent;
+import ma.ac.emi.ginfo.closer.entities.Book;
 import ma.ac.emi.ginfo.closer.entities.Provider;
 import ma.ac.emi.ginfo.closer.entities.Services;
 import ma.ac.emi.ginfo.closer.exceptions.UserNotFoundException;
-import ma.ac.emi.ginfo.closer.repositories.AdherentRepository;
+import ma.ac.emi.ginfo.closer.repositories.*;
 import ma.ac.emi.ginfo.closer.repositories.ProviderRepository;
-import ma.ac.emi.ginfo.closer.repositories.ProviderRepository;
-import ma.ac.emi.ginfo.closer.repositories.ServiceRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @Service
@@ -20,15 +20,17 @@ public class ProviderService {
 
     AdherentRepository ar;
 
-    public ProviderService(ProviderRepository pr, AdherentRepository ar) {
+    BookRepository br;
+
+    public ProviderService(ProviderRepository pr, AdherentRepository ar, BookRepository br) {
         this.pr = pr;
         this.ar = ar;
+        this.br = br;
     }
 
     public List<Provider> providers(){
         return pr.findAll();
     }
-
 
 
 
