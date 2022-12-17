@@ -23,6 +23,9 @@ public class Adherent {
     @Column(length = 50)
     private String mail;
 
+    @OneToOne
+    private Position position;
+
 //    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
 //    private List<Book> services = new ArrayList<>();
 
