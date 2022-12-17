@@ -1,0 +1,23 @@
+GET http://localhost:9999/rating/
+
+
+###
+
+POST http://localhost:9999/rating/add/2/1
+Content-Type: application/json
+
+{
+  "rate" : 4,
+  "description" : "What the fuck"
+}
+
+###
+
+GET http://localhost:9999/rating/find/1
+
+###
+
+
+DELETE http://localhost:9999/rating/delete/1
+
+###

@@ -1,0 +1,22 @@
+GET http://localhost:9999/services/find/all
+
+
+###
+
+POST http://localhost:9999/services/add
+Content-Type: application/json
+
+{
+  "name" : "Plombier"
+}
+
+###
+
+GET http://localhost:9999/services/find/1
+
+###
+
+
+DELETE http://localhost:9999/services/delete/1
+
+###

@@ -1,0 +1,45 @@
+GET http://localhost:9999/adherents/find/all
+
+
+###
+
+POST http://localhost:9999/adherents/add
+Content-Type: application/json
+
+{
+  "name" : "fajoui",
+  "mail" : "fajoui@gmail.com"
+}
+
+###
+
+POST http://localhost:9999/adherents/addP/5/1
+
+
+###
+
+POST http://localhost:9999/adherents/add/favoris/2/1
+
+###
+
+GET http://localhost:9999/adherents/find/1
+###
+
+GET http://localhost:9999/adherents/find/byService/1
+###
+
+PUT http://localhost:9999/adherents/update
+Content-Type: application/json
+
+{
+  "id" : 1,
+  "name" : "fajoui",
+  "mail" : "fajoui@gmail.com"
+}
+
+###
+
+
+DELETE http://localhost:9999/adherents/delete/1
+
+###
