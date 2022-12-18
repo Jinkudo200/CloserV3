@@ -9,6 +9,9 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 @SpringBootApplication
 public class CloserApplication implements CommandLineRunner {
@@ -41,32 +44,17 @@ public class CloserApplication implements CommandLineRunner {
     public void run(String... args) throws Exception {
 
 //        Services menuisier = new Menuisier();
-//
 //        System.out.println(menuisier);
-//
 //        servicesService.addServices(menuisier);
-//
 //        Menage menage = new Menage();
-//
 //        Adherent adherent = new Adherent("spongebob", "spongebob@gmail.com");
-//
 //        adherentService.addAdherent(adherent);
-//
 //        Provider provider1 = new Provider("Ayman", "ayman@gmail.com", menuisier);
-//
 ////        Provider provider2 = new Provider("imane" , menage);
-//
 //        providerService.addProvider(provider1);
-//
-//
 //        Adherent adherent2 = new Adherent("sofi", "spongebob@gmail.com");
-//
-//
 //        adherentService.addServiceToFavoris(provider1, adherent2);
-//
-//
 //        servicesService.addServices(menage);
-//
 //        providerService.becomeProvider(adherent, menage);
 //
 //
@@ -84,6 +72,32 @@ public class CloserApplication implements CommandLineRunner {
 ////        bookRepository.save(book);
 //        bookService.addBook(adherent2, provider1);
 //
+
+        List<Position> positions = new ArrayList<>();
+
+        Position p1 = new Position(1L,10L , 13L);
+        Position p3 = new Position(2L,30L , 27L);
+        Position p2 = new Position(3L,20L , 19L);
+
+        positions.add(p1);
+        positions.add(p3);
+        positions.add(p2);
+
+        PositionService positionService = new PositionService();
+        PositionService.current = new Position(50L, 9090L);
+
+        List<Double> distances = new ArrayList<>();
+
+        for (Position p: positions) {
+            distances.add(positionService.calculateDistanceInMeters(PositionService.current, p));
+        }
+
+        System.out.println(positions);
+        System.out.println(distances);
+        Collections.sort(positions);
+
+        System.out.println(positions);
+
 
     }
 }
