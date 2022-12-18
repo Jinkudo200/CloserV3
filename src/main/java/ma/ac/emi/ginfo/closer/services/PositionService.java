@@ -17,13 +17,11 @@ import java.util.stream.Collectors;
 @Setter
 public class PositionService {
 
-    public static Position current;
+    public static Adherent current;
 
 
     public PositionService() {
     }
-
-
 
 
     public Double calculateDistanceInMeters(Position p1 , Position p2) {

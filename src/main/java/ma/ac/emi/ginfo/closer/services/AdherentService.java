@@ -1,6 +1,7 @@
 package ma.ac.emi.ginfo.closer.services;
 
 import ma.ac.emi.ginfo.closer.entities.Adherent;
+import ma.ac.emi.ginfo.closer.entities.Position;
 import ma.ac.emi.ginfo.closer.entities.Provider;
 import ma.ac.emi.ginfo.closer.entities.Services;
 import ma.ac.emi.ginfo.closer.exceptions.UserNotFoundException;
@@ -13,6 +14,8 @@ import java.util.List;
 @Service
 public class AdherentService {
 
+
+
     AdherentRepository ar;
     ServiceRepository sr;
 
@@ -23,6 +26,11 @@ public class AdherentService {
 
 
     public Adherent addAdherent( Adherent a) {
+        return ar.save(a);
+    }
+
+    public Adherent addAdherent(Adherent a , Position p) {
+        a.setPosition(p);
         return ar.save(a);
     }
 

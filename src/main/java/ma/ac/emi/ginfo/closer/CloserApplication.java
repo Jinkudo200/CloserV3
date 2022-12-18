@@ -8,6 +8,8 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+import org.apache.commons.beanutils.BeanUtils;
+
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -73,30 +75,46 @@ public class CloserApplication implements CommandLineRunner {
 //        bookService.addBook(adherent2, provider1);
 //
 
-        List<Position> positions = new ArrayList<>();
+//        List<Adherent> positions = new ArrayList<>();
+//
+//        Position p1 = new Position(1L,10L , 13L);
+//        Position p3 = new Position(2L,30L , 27L);
+//        Position p2 = new Position(3L,20L , 19L);
+//
+//        Adherent a1 = new Adherent("mouad", "mofo" , p1);
+//        Adherent a2 = new Adherent("samih", "samiha" , p2);
+//        Adherent a3 = new Adherent("gogo", "gogo" , p3);
+//
+//        positions.add(a1);
+//        positions.add(a2);
+//        positions.add(a3);
+//
+//        PositionService positionService = new PositionService();
+//        PositionService.current = new Adherent("Ayman" , "song", new Position(50L, 9090L));
+//
+//        List<Double> distances = new ArrayList<>();
+//
+//        for (Adherent p: positions) {
+//            distances.add(positionService.calculateDistanceInMeters(PositionService.current.getPosition(), p.getPosition()));
+//        }
+//
+//        System.out.println(positions);
+//        System.out.println(distances);
+//        Collections.sort(positions);
+//
+//        System.out.println(positions);
 
-        Position p1 = new Position(1L,10L , 13L);
-        Position p3 = new Position(2L,30L , 27L);
-        Position p2 = new Position(3L,20L , 19L);
 
-        positions.add(p1);
-        positions.add(p3);
-        positions.add(p2);
-
-        PositionService positionService = new PositionService();
-        PositionService.current = new Position(50L, 9090L);
-
-        List<Double> distances = new ArrayList<>();
-
-        for (Position p: positions) {
-            distances.add(positionService.calculateDistanceInMeters(PositionService.current, p));
-        }
-
-        System.out.println(positions);
-        System.out.println(distances);
-        Collections.sort(positions);
-
-        System.out.println(positions);
+//        Adherent adherent = new Adherent("ayman");
+//
+//        System.out.println(adherent);
+//
+//        Provider p = new Provider();
+//
+//        BeanUtils.copyProperties(p, adherent);
+//
+//        System.out.println(p);
+//        System.out.println(adherent);
 
 
     }
