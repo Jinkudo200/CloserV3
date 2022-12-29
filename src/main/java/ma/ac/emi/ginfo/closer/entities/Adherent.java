@@ -34,7 +34,7 @@ public class Adherent implements Comparable<Adherent>, Serializable {
 
     private boolean isProvider;
 
-    @ManyToMany(cascade=CascadeType.ALL)
+    @ManyToMany
     private List<Provider> favoris = new ArrayList<>();
 
 

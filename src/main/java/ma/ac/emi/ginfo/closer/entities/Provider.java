@@ -50,9 +50,10 @@ public class Provider extends Adherent{
         this.setName(a.getName());
         this.setPosition(position);
         this.setCompte(compte);
-//        for (Provider p: a.getFavoris()) {
-//            this.getFavoris().add(p);
-//        }
+//        System.out.println(a.getFavoris());
+        for (Provider p: a.getFavoris()) {
+            this.getFavoris().add(p);
+        }
         this.setProvider(true);
         this.services = services;
         this.ratings = new ArrayList<>();
