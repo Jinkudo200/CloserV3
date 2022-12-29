@@ -8,7 +8,14 @@ Content-Type: application/json
 
 {
   "name" : "fajoui",
-  "mail" : "fajoui@gmail.com"
+  "position" : {
+    "latitude" : 10,
+    "longitude" : 20
+  },
+  "compte" : {
+    "email" : "fajoui@gmail.com",
+    "password" : "haha12354"
+  }
 }
 
 ###

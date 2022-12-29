@@ -5,6 +5,7 @@ import ma.ac.emi.ginfo.closer.entities.Book;
 import ma.ac.emi.ginfo.closer.entities.Provider;
 import ma.ac.emi.ginfo.closer.entities.Services;
 import ma.ac.emi.ginfo.closer.services.AdherentService;
+import ma.ac.emi.ginfo.closer.services.PositionService;
 import ma.ac.emi.ginfo.closer.services.ProviderService;
 import ma.ac.emi.ginfo.closer.services.ServicesService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -47,6 +48,21 @@ public class AdherentControllor {
         return new ResponseEntity<>(providers, HttpStatus.OK);
     }
 
+    @GetMapping("/login/{id}")
+    public ResponseEntity<Adherent> logIn(@PathVariable("id") Long id) {
+        Adherent adherent = as.findAdherentById(id);
+        PositionService.current = adherent;
+        return new ResponseEntity<>(adherent, HttpStatus.OK);
+    }
+
+    @GetMapping("/logout")
+    public ResponseEntity<Adherent> logout() {
+        PositionService.current = null;
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+
+
 //    @GetMapping("/d/{id}")
 //    public Adherent adherent(@PathVariable(name = "id") Long id){
 //        return as.findAdherentById(id);
@@ -55,6 +71,7 @@ public class AdherentControllor {
     @PostMapping("/add")
     public ResponseEntity<Adherent> addAdherent(@RequestBody Adherent adherent) {
         Adherent newAdherent = as.addAdherent(adherent);
+//        newAdherent.getPosition().setAdherent(newAdherent);
         return new ResponseEntity<>(newAdherent, HttpStatus.CREATED);
     }
 

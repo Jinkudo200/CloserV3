@@ -16,6 +16,7 @@ import java.util.List;
 @DiscriminatorValue("P")
 public class Provider extends Adherent{
 
+
     @ManyToOne
     private Services services;
 
@@ -24,12 +25,40 @@ public class Provider extends Adherent{
     @OneToMany(mappedBy = "provider")
     private List<Rating> ratings;
 
+//    @OneToOne(cascade=CascadeType.ALL)
+//    private Position positionP;
 
-    public Provider(String name, String mail , Services services) {
-        super(name, mail);
+//    @OneToOne(cascade=CascadeType.ALL)
+//    private Compte compteP;
+
+
+
+    public Provider(String name , Services services) {
+        super(name);
         this.setProvider(true);
         this.services = services;
         this.ratings = new ArrayList<>();
     }
+
+    public Provider(Adherent a , Services services) {
+        Position position = new Position(a.getPosition().getLatitude(),
+                a.getPosition().getLongitude(),
+                this);
+        Compte compte = new Compte(a.getCompte().getEmail(),
+                a.getCompte().getPassword(),
+                this);
+        this.setName(a.getName());
+        this.setPosition(position);
+        this.setCompte(compte);
+//        System.out.println(a.getFavoris());
+        for (Provider p: a.getFavoris()) {
+            this.getFavoris().add(p);
+        }
+        this.setProvider(true);
+        this.services = services;
+        this.ratings = new ArrayList<>();
+    }
+
+
 }
 

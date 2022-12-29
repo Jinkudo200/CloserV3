@@ -35,7 +35,7 @@ public class ProviderService {
 
 
     public Provider becomeProvider(Adherent a , Services s){
-        Provider provider = new Provider(a.getName(), a.getMail() , s);
+        Provider provider = new Provider(a , s );
         ar.delete(a);
         return pr.save(provider);
     }
