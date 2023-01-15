@@ -44,7 +44,7 @@ public class RatingControllor {
                                             @PathVariable("idAdherent") Long idAdherent,
                                             @PathVariable("idService") Long idProvider) {
         Adherent adherent = as.findAdherentById(idAdherent);
-        Provider provider = ps.findProviderById(idProvider);
+        Provider provider = ps.findProviderByIdP(idProvider);
         Rating newRating = rs.addRating(rating , adherent, provider);
         return new ResponseEntity<>(newRating, HttpStatus.CREATED);
     }

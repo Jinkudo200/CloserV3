@@ -40,11 +40,12 @@ public class BookControllor {
 //        return bs.findBookById(id);
 //    }
 
+
     @PostMapping("/add/{idAdherent}/{idProvider}")
     public ResponseEntity<Book> addBook(@PathVariable("idAdherent") Long idAdherent,
                                         @PathVariable("idProvider") Long idProvider) {
         Adherent adherent = as.findAdherentById(idAdherent);
-        Provider provider = ps.findProviderById(idProvider);
+        Provider provider = ps.findProviderByIdP(idProvider);
         Book newBook = bs.addBook(adherent , provider);
 //        adherent.getProvider().add(newBook);
         return new ResponseEntity<>(newBook, HttpStatus.CREATED);

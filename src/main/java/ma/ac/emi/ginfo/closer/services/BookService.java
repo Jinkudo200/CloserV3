@@ -26,6 +26,10 @@ public class BookService {
         return br.save(book);
     }
 
+    public Book addBook(Book b) {
+        return br.save(b);
+    }
+
     public Book acceptBook(Book book) {
         book.setDateAccepted(LocalDate.now());
         book.setState(State.ACCEPTED);
@@ -59,5 +63,9 @@ public class BookService {
 
     public void deleteBook(UUID id){
         br.deleteById(id);
+    }
+
+    public List<Book> findBooksByAdherent(Adherent adherent) {
+        return br.findBooksByAdherent(adherent);
     }
 }

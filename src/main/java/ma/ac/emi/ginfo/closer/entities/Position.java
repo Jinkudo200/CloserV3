@@ -19,9 +19,9 @@ public class Position implements Serializable {
     private Long latitude;
     private Long longitude;
 
-    @JsonIgnore
-    @OneToOne(mappedBy = "position", cascade=CascadeType.ALL)
-    private Adherent adherent;
+//    @JsonIgnore
+//    @OneToOne(mappedBy = "position", cascade=CascadeType.ALL)
+//    private Adherent adherent;
 
 
     public Position(Long latitude, Long longitude) {
@@ -46,7 +46,7 @@ public class Position implements Serializable {
     public Position(Long latitude, Long longitude, Adherent adherent) {
         this.latitude = latitude;
         this.longitude = longitude;
-        this.adherent = adherent;
+//        this.adherent = adherent;
     }
 
 //    public Position(Long latitude, Long longitude, Provider provider) {
@@ -63,7 +63,7 @@ public class Position implements Serializable {
                 "id=" + id +
                 ", latitude=" + latitude +
                 ", longitude=" + longitude +
-                ", adherent=" + adherent.getName() +
+//                ", adherent=" + adherent.getName() +
                 '}';
     }
 

@@ -19,11 +19,11 @@ public class Book implements Serializable {
     private UUID id;
 
     @Id
-    @ManyToOne
+    @ManyToOne(cascade=CascadeType.ALL)
     private Adherent adherent;
 
     @Id
-    @ManyToOne
+    @ManyToOne(cascade=CascadeType.ALL)
     private Provider provider;
 
     @Id
@@ -37,6 +37,16 @@ public class Book implements Serializable {
 
 
     public Book() {
+    }
+
+    public Book(UUID id, Adherent adherent, Provider provider, LocalDate dateOrdered, State state, LocalDate dateAccepted, LocalDate dateDone) {
+        this.id = id;
+        this.adherent = adherent;
+        this.provider = provider;
+        this.dateOrdered = dateOrdered;
+        this.state = state;
+        this.dateAccepted = dateAccepted;
+        this.dateDone = dateDone;
     }
 
     public Book(Adherent adherent, Provider p, LocalDate dateOrdered) {

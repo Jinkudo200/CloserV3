@@ -1,13 +1,7 @@
 package ma.ac.emi.ginfo.closer.controllors;
 
-import ma.ac.emi.ginfo.closer.entities.Adherent;
-import ma.ac.emi.ginfo.closer.entities.Book;
-import ma.ac.emi.ginfo.closer.entities.Provider;
-import ma.ac.emi.ginfo.closer.entities.Services;
-import ma.ac.emi.ginfo.closer.services.AdherentService;
-import ma.ac.emi.ginfo.closer.services.PositionService;
-import ma.ac.emi.ginfo.closer.services.ProviderService;
-import ma.ac.emi.ginfo.closer.services.ServicesService;
+import ma.ac.emi.ginfo.closer.entities.*;
+import ma.ac.emi.ginfo.closer.services.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -28,6 +22,10 @@ public class AdherentControllor {
 
     @Autowired
     ProviderService ps;
+
+    @Autowired
+    BookService bs;
+
 
     @GetMapping("/find/all")
     public ResponseEntity<List<Adherent>> adherents(){
@@ -80,7 +78,12 @@ public class AdherentControllor {
                                                 @PathVariable("idServices") Long idService) {
         Adherent adherent = as.findAdherentById(idAdherent);
         Services services = ss.findServicesById(idService);
+        List<Book> books = bs.findBooksByAdherent(adherent);
         Provider provider = ps.becomeProvider(adherent , services);
+        for (Book b : books) {
+            Book book = new Book(b.getId(), provider, b.getProvider(), b.getDateOrdered(), b.getState(), b.getDateAccepted(), b.getDateDone());
+            bs.addBook(book);
+        }
         return new ResponseEntity<>(provider, HttpStatus.CREATED);
     }
 
@@ -88,7 +91,7 @@ public class AdherentControllor {
     public ResponseEntity<Adherent> addServiceToFavoris(@PathVariable("idAdherent") Long idAdherent,
                                         @PathVariable("idServices") Long idProvider) {
         Adherent adherent = as.findAdherentById(idAdherent);
-        Provider provider = ps.findProviderById(idProvider);
+        Provider provider = ps.findProviderByIdP(idProvider);
         Adherent newAdherent = as.addServiceToFavoris(provider, adherent);
         return new ResponseEntity<>(newAdherent, HttpStatus.CREATED);
     }

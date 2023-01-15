@@ -23,10 +23,10 @@ public class Adherent implements Comparable<Adherent>, Serializable {
     @Column(length = 50)
     private String name;
 
-    @OneToOne(cascade=CascadeType.ALL)
+    @OneToOne(cascade=CascadeType.PERSIST)
     private Position position;
 
-    @OneToOne(cascade=CascadeType.ALL)
+    @OneToOne(cascade=CascadeType.PERSIST)
     private Compte compte;
 
 //    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
