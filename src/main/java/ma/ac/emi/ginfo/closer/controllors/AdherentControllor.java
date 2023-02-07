@@ -104,8 +104,8 @@ public class AdherentControllor {
     }
 
     @GetMapping("/login")
-    public ResponseEntity<Adherent> login(@RequestBody Compte compte) {
-        Adherent adherent = as.findAdherentByEmailAndPassword(compte.getEmail(), compte.getPassword());
+    public ResponseEntity<Adherent> login(@RequestParam("email") String email, @RequestParam("password") String password) {
+        Adherent adherent = as.findAdherentByEmailAndPassword(email, password);
         return new ResponseEntity<>(adherent, HttpStatus.OK);
     }
 
