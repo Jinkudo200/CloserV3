@@ -47,7 +47,7 @@ public class RequestControllor {
                                               @PathVariable("idServices") Long idService) {
         Adherent adherent = as.findAdherentById(idAdherent);
         Services services = ss.findServicesById(idService);
-        Request newRequest = rs.addRequest(adherent , services, request.getPosition(), request.getDescription());
+        Request newRequest = rs.addRequest(adherent , services, request.getPosition(), request.getDescription(), request.getDateChosen());
 //        adherent.getProvider().add(newRequest);
         return new ResponseEntity<>(newRequest, HttpStatus.CREATED);
     }

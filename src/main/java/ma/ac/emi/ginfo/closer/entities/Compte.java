@@ -25,6 +25,9 @@ public class Compte {
     @OneToOne(mappedBy = "compte", cascade=CascadeType.DETACH)
     private Adherent adherent;
 
+
+
+
 //    @JsonIgnore
 //    @OneToOne(mappedBy = "compteP", cascade=CascadeType.ALL)
 //    private Provider provider;

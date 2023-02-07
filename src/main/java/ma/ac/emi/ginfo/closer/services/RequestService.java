@@ -25,8 +25,8 @@ public class RequestService {
         this.or = or;
     }
 
-    public Request addRequest(Adherent a, Services services, Position position, String description) {
-        Request request = new Request(a, services, position, description);
+    public Request addRequest(Adherent a, Services services, Position position, String description, LocalDate dateChosen) {
+        Request request = new Request(a, services, position, description, dateChosen);
         return rr.save(request);
     }
 

@@ -39,6 +39,8 @@ public class Request implements Comparable<Request>{
 
     private LocalDate dateOrdered;
 
+    private LocalDate dateChosen;
+
 
     private LocalDate dateAccepted;
 
@@ -51,7 +53,7 @@ public class Request implements Comparable<Request>{
     @OneToOne
     private Offer offerSelected;
 
-    public Request(Adherent adherent, Services services, Position position, String description) {
+    public Request(Adherent adherent, Services services, Position position, String description, LocalDate dateChosen) {
         this.adherent = adherent;
         this.services = services;
         this.position = position;
@@ -59,6 +61,7 @@ public class Request implements Comparable<Request>{
         this.state = State.TREATING;
         this.offers = new ArrayList<>();
         this.dateOrdered = LocalDate.now();
+        this.dateChosen = dateChosen;
     }
 
     @Override
