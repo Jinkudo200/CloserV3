@@ -10,4 +10,7 @@ import java.util.Optional;
 public interface AdherentRepository extends JpaRepository<Adherent, Long> {
     Optional<Adherent> findAdherentById(Long id);
 
+    Optional<Adherent> findAdherentByCompteEmailAndComptePassword(String email, String password);
+
+
 }

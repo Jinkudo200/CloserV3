@@ -103,6 +103,12 @@ public class AdherentControllor {
         return new ResponseEntity<>(adherent, HttpStatus.OK);
     }
 
+    @GetMapping("/login")
+    public ResponseEntity<Adherent> login(@RequestBody Compte compte) {
+        Adherent adherent = as.findAdherentByEmailAndPassword(compte.getEmail(), compte.getPassword());
+        return new ResponseEntity<>(adherent, HttpStatus.OK);
+    }
+
     @PutMapping("/update")
     public ResponseEntity<Adherent> updateAdherent(@RequestBody Adherent adherent) {
         Adherent updateAdherent = as.updateAdherent(adherent);

@@ -44,6 +44,11 @@ public class AdherentService {
                 .orElseThrow(() -> new UserNotFoundException("User by id " + id + " was not found"));
     }
 
+    public Adherent findAdherentByEmailAndPassword(String email, String password){
+        return ar.findAdherentByCompteEmailAndComptePassword(email, password)
+                .orElseThrow(() -> new UserNotFoundException("User was not found"));
+    }
+
     public Adherent updateAdherent(Adherent adherent){
         return ar.save(adherent);
     }
