@@ -3,6 +3,7 @@ package ma.ac.emi.ginfo.closer.services;
 import ma.ac.emi.ginfo.closer.entities.*;
 import ma.ac.emi.ginfo.closer.enumeration.State;
 import ma.ac.emi.ginfo.closer.exceptions.UserNotFoundException;
+import ma.ac.emi.ginfo.closer.repositories.OfferRepository;
 import ma.ac.emi.ginfo.closer.repositories.RequestRepository;
 import org.springframework.stereotype.Service;
 
@@ -16,8 +17,12 @@ public class RequestService {
 
     RequestRepository rr;
 
-    public RequestService(RequestRepository rr) {
+    OfferRepository or;
+
+
+    public RequestService(RequestRepository rr, OfferRepository or) {
         this.rr = rr;
+        this.or = or;
     }
 
     public Request addRequest(Adherent a, Services services, Position position, String description) {
@@ -61,7 +66,12 @@ public class RequestService {
 
     public Request findRequestById(UUID id) {
         return rr.findRequestById(id)
-                .orElseThrow(() -> new UserNotFoundException("User by id " + id + "was not found"));
+                .orElseThrow(() -> new UserNotFoundException("Request by id " + id + "was not found"));
+    }
+
+    public Offer findOfferById(UUID id) {
+        return or.findOfferById(id)
+                .orElseThrow(() -> new UserNotFoundException("Offer by id " + id + "was not found"));
     }
 
     public Request updateRequest(Request request) {

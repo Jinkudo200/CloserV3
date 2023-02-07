@@ -22,7 +22,7 @@ public class Compte {
     private String password;
 
     @JsonIgnore
-    @OneToOne(mappedBy = "compte", cascade=CascadeType.ALL)
+    @OneToOne(mappedBy = "compte", cascade=CascadeType.DETACH)
     private Adherent adherent;
 
 //    @JsonIgnore

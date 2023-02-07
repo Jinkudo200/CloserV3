@@ -36,11 +36,7 @@ public class CloserApplication implements CommandLineRunner {
     @Autowired
     RatingService ratingService;
 
-    @Autowired
-    BookService bookService;
 
-    @Autowired
-    BookRepository bookRepository;
 
     @Override
     public void run(String... args) throws Exception {

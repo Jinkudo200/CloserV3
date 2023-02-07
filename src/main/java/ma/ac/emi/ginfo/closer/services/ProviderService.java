@@ -17,12 +17,12 @@ public class ProviderService {
 
     AdherentRepository ar;
 
-    BookRepository br;
+    RequestRepository rr;
 
-    public ProviderService(ProviderRepository pr, AdherentRepository ar, BookRepository br) {
+    public ProviderService(ProviderRepository pr, AdherentRepository ar, RequestRepository rr) {
         this.pr = pr;
         this.ar = ar;
-        this.br = br;
+        this.rr = rr;
     }
 
     public List<Provider> providers() {
@@ -31,12 +31,9 @@ public class ProviderService {
 
 
     public Provider becomeProvider(Adherent a, Services s) {
-        List<Book> books = br.findBooksByAdherent(a);
 
         Provider provider = new Provider(a, s);
-        for (Book b : books) {
-            br.delete(b);
-        }
+
         ar.delete(a);
         return pr.save(provider);
     }

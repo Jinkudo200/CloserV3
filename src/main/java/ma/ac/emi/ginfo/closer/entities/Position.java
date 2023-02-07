@@ -19,9 +19,9 @@ public class Position implements Serializable {
     private Long latitude;
     private Long longitude;
 
-//    @JsonIgnore
-//    @OneToOne(mappedBy = "position", cascade=CascadeType.ALL)
-//    private Adherent adherent;
+    @JsonIgnore
+    @OneToOne(mappedBy = "position", cascade=CascadeType.DETACH)
+    private Adherent adherent;
 
 
     public Position(Long latitude, Long longitude) {

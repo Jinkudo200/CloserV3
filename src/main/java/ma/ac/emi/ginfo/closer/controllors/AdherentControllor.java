@@ -24,7 +24,8 @@ public class AdherentControllor {
     ProviderService ps;
 
     @Autowired
-    BookService bs;
+    RequestService rs;
+
 
 
     @GetMapping("/find/all")
@@ -78,11 +79,10 @@ public class AdherentControllor {
                                                 @PathVariable("idServices") Long idService) {
         Adherent adherent = as.findAdherentById(idAdherent);
         Services services = ss.findServicesById(idService);
-        List<Book> books = bs.findBooksByAdherent(adherent);
+        List<Request> requests = rs.findRequestsByAdherent(adherent);
         Provider provider = ps.becomeProvider(adherent , services);
-        for (Book b : books) {
-            Book book = new Book(b.getId(), provider, b.getProvider(), b.getDateOrdered(), b.getState(), b.getDateAccepted(), b.getDateDone());
-            bs.addBook(book);
+        for (Request b : requests) {
+            b.setAdherent(provider);
         }
         return new ResponseEntity<>(provider, HttpStatus.CREATED);
     }

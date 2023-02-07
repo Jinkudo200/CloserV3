@@ -1,16 +1,12 @@
 package ma.ac.emi.ginfo.closer.services;
 
-import ma.ac.emi.ginfo.closer.entities.*;
 import ma.ac.emi.ginfo.closer.entities.Services;
 import ma.ac.emi.ginfo.closer.exceptions.UserNotFoundException;
 import ma.ac.emi.ginfo.closer.repositories.AdherentRepository;
-import ma.ac.emi.ginfo.closer.repositories.BookRepository;
 import ma.ac.emi.ginfo.closer.repositories.ServiceRepository;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDate;
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class ServicesService {

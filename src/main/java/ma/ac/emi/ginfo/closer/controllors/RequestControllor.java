@@ -1,12 +1,14 @@
 package ma.ac.emi.ginfo.closer.controllors;
 
 import ma.ac.emi.ginfo.closer.entities.*;
+import ma.ac.emi.ginfo.closer.enumeration.State;
 import ma.ac.emi.ginfo.closer.services.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
 import java.util.Collections;
 import java.util.List;
 import java.util.UUID;
@@ -88,6 +90,19 @@ public class RequestControllor {
         PositionService.current = provider;
         Collections.sort(requests);
         return new ResponseEntity<>(requests, HttpStatus.OK);
+    }
+
+
+    @PostMapping("/chooseOffer/{idRequest}/{idOffer}")
+    public ResponseEntity<Request> chooseOffer(@PathVariable("idRequest") UUID idRequest,
+                                                                   @PathVariable("idOffer") UUID idOffer) {
+        Request request = rs.findRequestById(idRequest);
+        Offer offer = rs.findOfferById(idOffer);
+        request.setState(State.ACCEPTED);
+        request.setDateAccepted(LocalDate.now());
+        request.setOfferSelected(offer);
+        request.setOffers(null);
+        return new ResponseEntity<>(request, HttpStatus.OK);
     }
 
 
