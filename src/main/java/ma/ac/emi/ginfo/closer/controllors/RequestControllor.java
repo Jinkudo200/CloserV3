@@ -57,7 +57,7 @@ public class RequestControllor {
                                               @PathVariable("idRequest") UUID idRequest,
                                               @PathVariable("idProvider") Long idProvider) {
         Request request = rs.findRequestById(idRequest);
-        Provider provider = ps.findProviderByIdP(idProvider);
+        Provider provider = ps.findProviderById(idProvider);
         Request newRequest = rs.addOfferToRequest(request , offer, provider);
 //        adherent.getProvider().add(newRequest);
         return new ResponseEntity<>(newRequest, HttpStatus.CREATED);
