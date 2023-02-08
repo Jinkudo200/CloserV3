@@ -14,11 +14,11 @@ public interface RequestRepository extends JpaRepository<Request, UUID> {
 
     Optional<Request> findRequestById(UUID id);
 
-    List<Request> findRequestsByAdherent(Adherent a);
+    Optional<List<Request>> findRequestsByAdherent(Adherent a);
 
-    List<Request> findRequestsByState(State state);
+    Optional<List<Request>> findRequestsByState(State state);
 
-    List<Request> findRequestsByServices(Services services);
+    Optional<List<Request>> findRequestsByServices(Services services);
 
 
     void deleteById(UUID id);

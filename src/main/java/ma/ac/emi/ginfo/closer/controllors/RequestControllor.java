@@ -69,6 +69,20 @@ public class RequestControllor {
         return new ResponseEntity<>(requests, HttpStatus.OK);
     }
 
+    @GetMapping("/findByAdherent/{id}")
+    public ResponseEntity<List<Request>> findByAdherent(@PathVariable("id") Long id) {
+        Adherent adherent = as.findAdherentById(id);
+        List<Request> requests = rs.findRequestsByAdherent(adherent);
+        return new ResponseEntity<>(requests, HttpStatus.OK);
+    }
+
+    @GetMapping("/findByService/{id}")
+    public ResponseEntity<List<Request>> findByService(@PathVariable("id") Long id) {
+        Services services = ss.findServicesById(id);
+        List<Request> requests = rs.findRequestsByServices(services);
+        return new ResponseEntity<>(requests, HttpStatus.OK);
+    }
+
 
 
 

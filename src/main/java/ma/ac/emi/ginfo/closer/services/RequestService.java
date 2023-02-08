@@ -57,11 +57,11 @@ public class RequestService {
     }
 
     public List<Request> availableRequests() {
-        return rr.findRequestsByState(State.TREATING);
+        return rr.findRequestsByState(State.TREATING).orElse(null);
     }
 
     public List<Request> findRequestsByServices(Services services) {
-        return rr.findRequestsByServices(services);
+        return rr.findRequestsByServices(services).orElse(null);
     }
 
     public Request findRequestById(UUID id) {
@@ -83,7 +83,7 @@ public class RequestService {
     }
 
     public List<Request> findRequestsByAdherent(Adherent adherent) {
-        return rr.findRequestsByAdherent(adherent);
+        return rr.findRequestsByAdherent(adherent).orElse(null);
     }
 
     public Request addOfferToRequest(Request request, Offer offer, Provider provider) {
