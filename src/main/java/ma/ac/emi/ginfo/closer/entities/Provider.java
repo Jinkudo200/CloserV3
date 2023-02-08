@@ -20,9 +20,6 @@ import java.util.List;
 @JsonPropertyOrder({"idP"})
 public class Provider extends Adherent{
 
-    @JsonIgnore
-    private Long id;
-
     private Long idP;
 
     @ManyToOne
