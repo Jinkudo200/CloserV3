@@ -31,10 +31,13 @@ public class ProviderService {
 
 
     public Provider becomeProvider(Adherent a, Services s) {
+        List<Request> requests = rr.findRequestsByAdherent(a).orElse(null);
 
         Provider provider = new Provider(a, s);
-
         ar.delete(a);
+        for (Request r : requests) {
+            r.setAdherent(provider);
+        }
         return pr.save(provider);
     }
 
