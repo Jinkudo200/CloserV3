@@ -13,4 +13,5 @@ public interface AdherentRepository extends JpaRepository<Adherent, Long> {
     Optional<Adherent> findAdherentByCompteEmailAndComptePassword(String email, String password);
 
 
+    Optional<Adherent> findAdherentByCompteEmail(String email);
 }

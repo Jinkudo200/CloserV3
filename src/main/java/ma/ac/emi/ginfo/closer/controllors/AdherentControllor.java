@@ -109,6 +109,12 @@ public class AdherentControllor {
         return new ResponseEntity<>(adherent, HttpStatus.OK);
     }
 
+    @GetMapping("/checkemail")
+    public ResponseEntity<Adherent> checkemail(@RequestParam("email") String email) {
+        Adherent adherent = as.findAdherentByEmail(email);
+        return new ResponseEntity<>(adherent, HttpStatus.OK);
+    }
+
     @PutMapping("/update")
     public ResponseEntity<Adherent> updateAdherent(@RequestBody Adherent adherent) {
         Adherent updateAdherent = as.updateAdherent(adherent);

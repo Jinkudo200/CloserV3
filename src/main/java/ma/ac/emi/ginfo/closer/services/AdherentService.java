@@ -49,6 +49,10 @@ public class AdherentService {
                 .orElseThrow(() -> new UserNotFoundException("User was not found"));
     }
 
+    public Adherent findAdherentByEmail(String email) {
+        return ar.findAdherentByCompteEmail(email).orElse(null);
+    }
+
     public Adherent updateAdherent(Adherent adherent){
         return ar.save(adherent);
     }
@@ -61,5 +65,6 @@ public class AdherentService {
         adherent.getFavoris().add(a);
         return ar.save(adherent);
     }
+
 
 }
